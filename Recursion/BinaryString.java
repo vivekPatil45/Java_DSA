@@ -1,29 +1,34 @@
 // print all binary string of size N without consecutive ones
 public class BinaryString {
     
-    public static int friendsPairing(int n){ // 2*n (floor size)
+    public static void printBinaryString(int n, int lastPlace, String str ){
         
-        if(n==1 || n==2){
-            return n;
+        if (n==0) {
+            System.out.println(str);
+            return;
         }
 
 
-        //choice single
-        int fnm1 = friendsPairing(n-1);
-        
-        //pair 
-        int fnm2 = friendsPairing(n-2);
-        int pairways = (n-1) * fnm2;
-
-        //totalways
-        int totWays = fnm1 + pairways;
-        return totWays;
+        // if(lastPlace == 0){
+        //     // sit 0 on chair n
+        //     // str.append("0");
+        //     printBinaryString(n-1, 0, str.append("0"));
+        //     printBinaryString(n-1, 1, str.append("1"));
+        // }else{
+        //     printBinaryString( n-1 , 0, str.append("0"));
+        // }
+        printBinaryString(n-1, 0, str+"0");
+        if(lastPlace == 0){
+                // sit 0 on chair n
+                // str.append("0");
+            printBinaryString(n-1, 1, str+"1");
+        }
     }
 
     public static void main(String[] args) {
         
-        int n = 3;
-        System.out.println(friendsPairing(n));
+        printBinaryString(3, 0, "");
+        
 
     }
 }
