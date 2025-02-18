@@ -99,6 +99,44 @@ public class MergeSortLL {
         System.out.println("null");
     }
 
+    public void zigZag(){
+        // find mid
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        Node mid = slow;
+
+        // reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev= curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+        Node nextL, nextR;
+        
+        //zigzag merge
+        while (left != null && right != null) {
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+
+            left = nextL;
+            right = nextR;
+        }
+
+    }
+
     public static void main(String[] args) {
         
         MergeSortLL l1 = new MergeSortLL();
@@ -109,6 +147,8 @@ public class MergeSortLL {
         l1.addFirst(5);
         l1.print();
         l1.head = l1.mergeSort(l1.head);
+        l1.print();
+        l1.zigZag();
         l1.print();
  
     }
