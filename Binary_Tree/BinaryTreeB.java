@@ -17,7 +17,7 @@ public class BinaryTreeB {
     }
 
     static class BinaryTree{
-          /*we will treverse the whole tree index wise and at first only 
+        /*we will treverse the whole tree index wise and at first only 
         we will increase the index so basical we will start with zero*/
         static int idx = -1;
         public static Node buildTree(int nodes[]){
